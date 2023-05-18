@@ -20,15 +20,14 @@ const Home: NextPage<{ allPostsData: Post[] }> = ({ allPostsData }) => {
             <h1 className="brand-text h-auto pb-4 text-6xl font-light text-transparent">
               <span className="font-extrabold">APP</span> by seahyx.
             </h1>
-            <h1 className="text-center text-2xl font-light text-slate-200">
-              <Link href="posts/first-post">Go to First Post!</Link>
-            </h1>
             <section className="font-light text-slate-100">
               <h2 className="text-3xl font-bold">Blog</h2>
               <ul>
                 {allPostsData.map((post: Post) => (
                   <li className="mt-4" key={post.id}>
-                    <span className="text-lg">{post.title}</span>
+                    <Link href={`/posts/${post.id}`} className="text-lg">
+                      {post.title}
+                    </Link>
                     <br />
                     <span className="text-slate-400">{post.id}</span> -{" "}
                     {post.date}

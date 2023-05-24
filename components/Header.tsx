@@ -1,5 +1,16 @@
 import Link from "next/link";
 
+type NavItem = {
+  name: string;
+  link: string;
+};
+
+const navItems: NavItem[] = [
+  { name: "Posts", link: "/" },
+  { name: "Drafts", link: "/drafts" },
+  { name: "Add Post", link: "/create" },
+];
+
 export default function Header() {
   return (
     <header className="absolute left-0 right-0 top-0 flex items-center justify-center">
@@ -12,18 +23,13 @@ export default function Header() {
             <span className="font-extrabold">APP</span> by seahyx
           </h1>
         </Link>
-        <a href="#" className="no-underline">
-          <svg
-            width="31"
-            height="27"
-            viewBox="0 0 31 27"
-            fill="none"
-            xmlns="<http://www.w3.org/2000/svg>"
-          >
-            <path d="" fill="#9094FF" />
-          </svg>
-          <span></span>
-        </a>
+        <ul className="ml-12 flex flex-row gap-6 font-bold text-slate-300">
+          {navItems.map(({ name, link }) => (
+            <li className="hover:underline">
+              <Link href={link}>{name}</Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </header>
   );

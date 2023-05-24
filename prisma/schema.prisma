@@ -15,7 +15,7 @@ model User {
   email   String   @unique
   name    String?
   role    Role     @default(USER)
-  posts   Post[]
+  //posts   Post[]
   profile Profile?
 }
 
@@ -33,8 +33,8 @@ model Post {
   title      String
   content    String?    @db.LongText
   published  Boolean    @default(false)
-  author     User       @relation(fields: [authorId], references: [id])
-  authorId   String
+  //author     User       @relation(fields: [authorId], references: [id])
+  //authorId   String
   categories Category[]
   Comment    Comment[]
 }

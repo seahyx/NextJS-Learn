@@ -1,9 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import { getSortedPostsData } from "lib/posts";
 
-const Home: NextPage<{ allPostsData: Post[] }> = ({ allPostsData }) => {
+const Home: NextPage = () => {
   return (
     <>
       <Head>
@@ -12,7 +10,6 @@ const Home: NextPage<{ allPostsData: Post[] }> = ({ allPostsData }) => {
           name="description"
           content="This is an APP made by Seah Ying Xiang"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#6d0247] to-[#29152c]">
         <div className="container flex h-fit min-h-screen flex-col items-center justify-center">
@@ -22,18 +19,6 @@ const Home: NextPage<{ allPostsData: Post[] }> = ({ allPostsData }) => {
             </h1>
             <section className="font-light text-slate-100">
               <h2 className="text-3xl font-bold">Blog</h2>
-              <ul>
-                {allPostsData.map((post: Post) => (
-                  <li className="mt-4" key={post.id}>
-                    <Link href={`/posts/${post.id}`} className="text-lg">
-                      {post.title}
-                    </Link>
-                    <br />
-                    <span className="text-slate-400">{post.id}</span> -{" "}
-                    {post.date}
-                  </li>
-                ))}
-              </ul>
             </section>
           </div>
         </div>
@@ -45,10 +30,7 @@ const Home: NextPage<{ allPostsData: Post[] }> = ({ allPostsData }) => {
 export default Home;
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
   return {
-    props: {
-      allPostsData,
-    },
+    props: {},
   };
 }
